@@ -66,15 +66,14 @@ void setup() {
 
 void loop() {
   readCard();
-  if (matchUID(mfrc522.uid.uidByte, mfrc522.uid.size)) {
-    Serial.println("Welcome");
-  } else {
-    Serial.println("GTFO");    
-  }
-  
-  delay(1500);
-}
 
+  if (matchUID(mfrc522.uid.uidByte, mfrc522.uid.size)) {
+    Serial.println("Accepted");
+  } else {
+    Serial.println("Rejected");
+  }
+  delay(5000);
+}
 void readCard() {
 	// Reset the loop if no new card present on the sensor/reader. This saves the entire process when idle.
 	if ( ! mfrc522.PICC_IsNewCardPresent()) {
